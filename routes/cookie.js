@@ -6,6 +6,7 @@ var path = require('path');
 var db = require('../lib/db');
 var template = require('../lib/template');
 var auth = require('../lib/auth');
+const passport = require('passport');
 
 var authData = {
   email: 'egoing777@gmail.com',
@@ -28,20 +29,15 @@ router.get('/login', function(request, response){
   });
 })
 
-router.post('/login_process', function(request, response){
-  var post = request.body;
-  var email = post.email;
-  var password = post.password;
-  if(email === authData.email && password === authData.password){
-    request.session.is_logined = true;
-    request.session.nickname = authData.nickname;
+router.post('/login_process',
+  passport.authenticate('local', {
+    failureRedirect: 'cookie/login'
+  }), function(request, response){
     request.session.save(function(){
       response.redirect('/');
-    });
-  } else{
-    response.send('who?');
+    })
   }
-})
+)
 
 router.get('/logout', function(request, response){
   request.session.destroy(function(err){

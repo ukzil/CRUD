@@ -8,7 +8,7 @@ var qs = require('querystring');
 var auth = require('../lib/auth');
 
 router.get('',function(request, response, next){
-  if(!auth.authIsOwner(request, response)){
+  if(!request.user){
     response.redirect('/')
     return false;
   }

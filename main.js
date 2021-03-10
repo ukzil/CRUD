@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var session = require('express-session');
-var FileStore = require('session-file-store')(session);
 var template = require('./lib/template.js');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -11,6 +10,8 @@ var authorRouter = require('./routes/author');
 var cookieRouter = require('./routes/cookie');
 var db = require('./lib/db');
 var auth = require('./lib/auth');
+// var FileStore = require('session-file-store')(session);
+var LokiStore = require('connect-loki')(session);
 
 app.use(express.static('public')); //public = dir
 // 지정된 디렉토리 제외하고 경로입력
@@ -23,56 +24,16 @@ app.use(session({
   secret: 'adsfasdfasf@!@#asdf',
   resave: false,
   saveUninitialized: true,
-  store: new FileStore()
+  store: new LokiStore()
 }))
+
+var passport = require('./lib/passport')(app);
+
 app.use('/topic', topicRouter);
 app.use('/author', authorRouter);
 app.use('/cookie', cookieRouter);
-/*
-var authData = {
-  email: 'egoing777@gmail.com',
-  password: '111111',
-  nickname: 'egoing'
-}
-
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-// 세션기반으로 사용하므로 세션을 정의한 후 require한다.
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'passwd'
-  },
-  function(username, password, done) {
-    console.log('LocalStrategy', username, password);
-    if(username === authData.email){
-      console.log(1);
-      if(password === authData.password){
-      console.log(2);
-        return done(null, authData);
-      } else{
-      console.log(3);
-        return done(null, false, {
-          message: 'Incorrect password.'
-        });
-      }
-    } else{
-      console.log(4);
-      return done(null, false, {
-        message: 'Incorrect username.'
-      });
-    }
-  }
-));
-
-app.post('/cookie/login_process',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/cookie/login'})
-);
-*/
 
 app.get('/', function(request, response){
-  console.log(request.session);
   db.query(`SELECT * FROM topic`, function(err, topics){
     var title = 'Welcome';
     var description = '';
