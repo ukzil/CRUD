@@ -1,0 +1,62 @@
+/* html, body{
+  margin: 0;
+}
+#container{
+  height: 100vh;
+  color: white;
+  background-image: url(../images/star.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #bbbbbb;
+  background-blend-mode: multiply;
+  opacity: 0.8;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+  color: darkgray;
+}
+h1 a{
+  font-size: 60px;
+}
+#author a{
+  font-size: 24px;
+}
+#list{
+  list-style: none;
+  position: flex;
+  border: 1px solid #ffffff;
+  width: 1024px;
+}
+#list ul{
+  position: flex;
+  flex-direction: row;
+  font-size: 20px;
+  list-style: none;
+  padding: 0; 
+}
+ul li a{
+  color: darkgray;
+}
+.sing input{
+  width: 150px;
+  height: 25px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.song textarea{
+  width: 150px;
+  height: 25px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.btn{
+  padding: 0 10px 0 10px;
+  border: 1px solid #ffffff;
+  background-color: #c0c0c060;
+  border-radius: 20px;
+} */

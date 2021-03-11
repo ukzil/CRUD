@@ -1,0 +1,9 @@
+pm2 실행시 db.json 파일 문제로 로그에 무한루프 나옴
+Stopping app:main id:0
+PM2      | App [main:0] exited with code [0] via signal [SIGINT]
+PM2      | pid=7396 msg=process killed
+PM2      | App [main:0] starting in -fork mode-
+PM2      | App [main:0] online
+실행 명령어
+pm2 start main.js --watch --ignore-watch="./, db.json"
+이렇게 실행

@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "2Qsd3CCjr",
+      "email": "10@gmail.com",
+      "password": "1111",
+      "displayName": "11"
+    },
+    {
+      "id": "TA0BPWLGb",
+      "email": "10@gmail.com",
+      "password": "111111",
+      "displayName": "11"
+    },
+    {
+      "id": "VLvTjZ0jb",
+      "email": "dkgtpzjs5479@naver.com",
+      "password": "11",
+      "displayName": "2121"
+    },
+    {
+      "id": "XHcB8enBm",
+      "email": "yeerim1004@naver.com",
+      "password": "1357",
+      "displayName": "예로니카짱짱걸"
+    }
+  ]
+}
